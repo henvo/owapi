@@ -4,9 +4,9 @@ module.exports = function(app) {
   var collection = require('../controllers/collections.controllers.server')
 
   // Route collection requests
-  app.route('/apis/:apiName')
+  app.route('/:apiName')
     .post(collection.create)
-  app.route('/apis/:apiName/:resourceName')
+  app.route('/:apiName/:resourceName')
     .put(collection.update)
     .delete(collection.remove)
 

@@ -4,8 +4,8 @@ module.exports = function() {
   var app = express()
 
   /* Require apps */
-  var apis = require('../apps/apis/')(app)
-    , admin = require('../apps/admin/')(app)
+  app.use('/apis', require('../apps/apis/'))
+  app.use('/admin', require('../apps/admin'))
 
   return app
 }
