@@ -1,0 +1,28 @@
+{
+  "name": "owapi",
+  "version": "0.0.1",
+  "description": "open web application programming interface",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/henvo/owapi.git"
+  },
+  "keywords": [
+    "api",
+    "node",
+    "express"
+  ],
+  "author": "Henning Vogt",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/henvo/owapi/issues"
+  },
+  "homepage": "https://github.com/henvo/owapi#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
