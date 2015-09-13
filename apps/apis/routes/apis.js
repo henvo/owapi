@@ -1,7 +1,7 @@
 module.exports = function(app) {
 
   // Require API controller
-  var apis = require('../controllers/apis.controllers.server')
+  var apis = require('../controllers/apis')
 
   // Route all API related requests
   app.route('/')

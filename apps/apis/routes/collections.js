@@ -1,7 +1,7 @@
 module.exports = function(app) {
 
   // Require controller
-  var collection = require('../controllers/collections.controllers.server')
+  var collection = require('../controllers/collections')
 
   // Route collection requests
   app.route('/:apiName')

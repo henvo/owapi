@@ -21,7 +21,10 @@ module.exports = function() {
 
   /* Require apps */
   app.use('/apis', require('../apps/apis/'))
-  app.use('/admin', require('../apps/admin'))
+  app.use('/admin', require('../apps/admin/'))
+
+  /* Require static files from public folder */
+  app.use('/static', express.static(__dirname + '/../public'))
 
   return app
 }

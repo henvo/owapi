@@ -1,8 +1,7 @@
 var express = require('express')
   , router = express.Router()
 
-  router.get('/', function(req, res) {
-    res.send('Admin View')
-  })
+// Require routes
+require('./routes/index')(router)
 
 module.exports = router;

@@ -1,7 +1,7 @@
 module.exports = function(app) {
 
   // Require resources router
-  var resources = require('../controllers/resources.controllers.server')
+  var resources = require('../controllers/resources')
 
   // Route all resources requests
   app.route('/:apiName/:resourceName')

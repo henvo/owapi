@@ -2,15 +2,15 @@ var express = require('express')
   , router = express.Router()
 
 /* Require models */
-require('./models/api.models.server')
+require('./models/api')
 
 /* Require middleware */
-require('./middleware/api.middleware.server')(router)
-require('./middleware/resource.middleware.server')(router)
+require('./middleware/api')(router)
+require('./middleware/resource')(router)
 
 /* Require routers */
-require('./routes/apis.routes.server')(router)
-require('./routes/resources.routes.server')(router)
-require('./routes/collections.routes.server')(router)
+require('./routes/apis')(router)
+require('./routes/resources')(router)
+require('./routes/collections')(router)
 
 module.exports = router
