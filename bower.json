@@ -2,6 +2,8 @@
   "name": "owapi",
   "version": "0.0.1",
   "dependencies": {
-    "angular": "~1.2"
+    "angular": "angularjs#~1.4.5",
+    "angular-route": "~1.4.5",
+    "bootstrap": "~3.3.5"
   }
 }

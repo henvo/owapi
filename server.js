@@ -9,6 +9,6 @@ var express = require('./config/express')
 var db = mongoose()
 
 app.listen(config.Port, function(err) {
-  if(err) console.error(err)
+  if(err) console.log(err)
   else console.log('Server running on port ' + config.Port)
 });
