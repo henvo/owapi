@@ -1,7 +1,9 @@
-<h1>Here are your APIs</h1>
+<div class="page-header">
+  <h1>Here are your APIs</h1>
+</div>
 
-<ul>
+<ul class="list-unstyled">
   <li ng-repeat="api in list.apis">
-    {{ api.name }}
+    <h2><a href="#/detail/{{ api.name }}">{{ api.name }}</a></h2>
   </li>
 </ul>

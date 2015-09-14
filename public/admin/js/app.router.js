@@ -17,4 +17,9 @@ angular.module('adminRoutes', ['ngRoute'])
         controller: 'newController',
         controllerAs: 'new'
       })
+      .when('/detail/:slug', {
+        templateUrl: '/static/admin/views/pages/detail.html',
+        controller: 'detailController',
+        controllerAs: 'detail'
+      })
   })

@@ -1,0 +1,7 @@
+<div class="page-header">
+  <h1>{{ detail.name }} <small>{{ detail.api.status }}</small></h1>
+</div>
+
+ <textarea class="form-control" rows="20">
+   {{ detail.api | json }}
+ </textarea>
