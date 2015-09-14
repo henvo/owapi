@@ -17,6 +17,10 @@ backend server for a simple API and database behind it.
 
         $ npm install
 
+3. Install bower packages
+
+        $ bower install
+
 3. Run server
 
         $ node server

@@ -20,7 +20,12 @@ angular.module('admin', ['adminRoutes'])
   .controller('newController', function($http) {
     var vm = this
     vm.submit = function() {
-      $http.post('/apis', { "name": vm.name, "status": vm.status })
+      $http.post('/apis', {
+        "name": vm.name,
+        "status": vm.status,
+        "info": vm.info,
+        "resources": JSON.parse(vm.resources)
+      })
         .then(function(response) {
           vm.response = response
         }, function(response) {

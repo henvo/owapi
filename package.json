@@ -1,6 +1,6 @@
 {
   "name": "owapi",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "open web application programming interface",
   "main": "server.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/henvo/owapi.git"
+    "url": "https://github.com/henvo/owapi.git"
   },
   "keywords": [
     "api",

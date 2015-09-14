@@ -4,6 +4,7 @@ var mongoose = require('mongoose')
 var apiSchema = mongoose.Schema({
   "name": { type: String, index: true, required: true, unique: true },
   "status": { type: String, required: true },
+  "info": String,
   "resources": {}
 })
 

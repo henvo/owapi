@@ -1,7 +1,18 @@
-<div class="page-header">
-  <h1>{{ detail.name }} <small>{{ detail.api.status }}</small></h1>
+<div class="row">
+  <div class="page-header">
+    <h1>{{ detail.name }} <small>{{ detail.api.status }}</small></h1>
+  </div>
 </div>
 
- <textarea class="form-control" rows="20">
-   {{ detail.api | json }}
- </textarea>
+<div class="row">
+  <p class="lead">{{ detail.api.info }}</p>
+</div>
+
+<div class="row">
+  <h2>Resources</h2>
+  <ul class="list-unstyled">
+    <li ng-repeat="(key, value) in detail.api.resources">
+      <h3>{{ key }}: {{ value }}</h3>
+    </li>
+  </ul>
+</div>
