@@ -22,10 +22,9 @@ angular.module('admin', ['adminRoutes'])
     vm.submit = function() {
       $http.post('/apis', { "name": vm.name, "status": vm.status })
         .then(function(response) {
-          vm.api = vm.name
+          vm.response = response
         }, function(response) {
-          // called asynchronously if an error occurs
-          // or server returns response with an error status.
+
         })
     }
   })
