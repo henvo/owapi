@@ -11,7 +11,7 @@ backend server for a simple API and database behind it.
 
 1. Get repository
 
-        $ git clone https+git://github.com/henvo/owapi.git
+        $ git clone https://github.com/henvo/owapi.git
 
 2. Install npm packages
 
@@ -24,3 +24,8 @@ backend server for a simple API and database behind it.
 3. Run server
 
         $ node server
+
+## License
+
+Copyright (c) 2015 Henning Vogt
+Licensed under the Apache License, Version 2.0
