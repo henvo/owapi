@@ -2,29 +2,81 @@
   New API <strong>{{ new.name }}</strong> successfully added!
 </div>
 
-<div class="page-header">
-  <h1>Create a new API</h1>
+<div class="row">
+  <div class="page-header">
+    <h1>Create a new API</h1>
+  </div>
 </div>
 
-<form role="form" ng-submit="new.submit()">
-  <div class="form-group">
-    <label for="name">Name:</label>
-    <input type="text" class="form-control" ng-model="new.name" id="name">
-  </div>
-  <div class="form-group">
-    <label for="sel1">Set status:</label>
-    <select class="form-control" id="sel1" ng-model="new.status">
-      <option>active</option>
-      <option>inactive</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="name">Info:</label>
-    <textarea class="form-control" ng-model="new.info" id="info"></textarea>
-  </div>
-  <div class="form-group">
-    <label for="name">Resources:</label>
-    <textarea class="form-control" ng-model="new.resources" id="resources"></textarea>
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
+<div class="row">
+  <form role="form" ng-submit="new.submit()">
+
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" ng-model="new.name" id="name">
+    </div>
+
+    <div class="form-group">
+      <label for="sel1">Set status:</label>
+      <select class="form-control" id="sel1" ng-model="new.status">
+        <option>active</option>
+        <option>inactive</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Info:</label>
+      <textarea class="form-control" ng-model="new.info" id="info"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Resources:</label>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Name: <input type="text" ng-model="new.temp.name">
+          <button type="button" class="btn btn-primary" ng-click="new.addResource()">
+            Add
+          </button>
+        </div>
+        <table class="table table-striped">
+          <tr>
+            <th class="col-md-6 text-center">Name</th>
+            <th  class="col-md-6 text-center">Schema</th>
+          </tr>
+          <tr ng-repeat="(key, value) in new.resources">
+            <td class="col-md-6">{{ key }}</td>
+            <td class="col-md-6">
+              <!-- START property table -->
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <input type="text" ng-model="new.temp.property">
+                  <button type="button" class="btn btn-primary" ng-click="new.addProperty(key)">
+                    add
+                  </button>
+                </div>
+                <table class="table table-bordered">
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                  </tr>
+                  <tr ng-repeat="(propKey, propValue) in new.resources[key]">
+                    <td>{{ propKey }}</td>
+                    <td>
+                      <select class="form-control" ng-model="new.resources[key][propValue]">
+                        <option>String</option>
+                        <option>Number</option>
+                      </select>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <!-- END property table -->
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>

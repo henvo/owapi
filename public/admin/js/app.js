@@ -19,12 +19,22 @@ angular.module('admin', ['adminRoutes'])
   // Controller of 'new' view
   .controller('newController', function($http) {
     var vm = this
+    vm.resources = {}
+
+    vm.addResource = function() {
+      vm.resources[vm.temp.name] = {}
+    }
+
+    vm.addProperty = function(key) {
+      vm.resources[key][vm.temp.property] = "String"
+    }
+
     vm.submit = function() {
       $http.post('/apis', {
         "name": vm.name,
         "status": vm.status,
         "info": vm.info,
-        "resources": JSON.parse(vm.resources)
+        "resources": vm.resources
       })
         .then(function(response) {
           vm.response = response
@@ -32,6 +42,7 @@ angular.module('admin', ['adminRoutes'])
 
         })
     }
+
   })
   // Controller of detail view
   .controller('detailController', ['$http', '$routeParams', function($http, $routeParams) {

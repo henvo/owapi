@@ -28,4 +28,5 @@ backend server for a simple API and database behind it.
 ## License
 
 Copyright (c) 2015 Henning Vogt
+
 Licensed under the Apache License, Version 2.0
