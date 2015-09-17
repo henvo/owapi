@@ -33,7 +33,7 @@
       <label for="name">Resources:</label>
       <div class="panel panel-default">
         <div class="panel-heading">
-          Name: <input type="text" ng-model="new.temp.name">
+          Name: <input type="text" ng-model="new.temp.resourceName">
           <button type="button" class="btn btn-primary" ng-click="new.addResource()">
             Add
           </button>
@@ -43,14 +43,14 @@
             <th class="col-md-6 text-center">Name</th>
             <th  class="col-md-6 text-center">Schema</th>
           </tr>
-          <tr ng-repeat="(key, value) in new.resources">
-            <td class="col-md-6">{{ key }}</td>
+          <tr ng-repeat="(resourceKey, resourceValue) in new.resources">
+            <td class="col-md-6">{{ resourceKey }}</td>
             <td class="col-md-6">
               <!-- START property table -->
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <input type="text" ng-model="new.temp.property">
-                  <button type="button" class="btn btn-primary" ng-click="new.addProperty(key)">
+                  <input type="text" ng-model="new.temp.properties[resourceKey]">
+                  <button type="button" class="btn btn-primary" ng-click="new.addProperty(resourceKey)">
                     add
                   </button>
                 </div>
@@ -59,10 +59,10 @@
                     <th>Name</th>
                     <th>Type</th>
                   </tr>
-                  <tr ng-repeat="(propKey, propValue) in new.resources[key]">
-                    <td>{{ propKey }}</td>
+                  <tr ng-repeat="(propertyKey, propertyValue) in new.resources[resourceKey]">
+                    <td>{{ propertyKey }}</td>
                     <td>
-                      <select class="form-control" ng-model="new.resources[key][propValue]">
+                      <select class="form-control" ng-model="new.resources[resourceKey][propertyKey]">
                         <option>String</option>
                         <option>Number</option>
                       </select>

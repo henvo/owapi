@@ -20,13 +20,16 @@ angular.module('admin', ['adminRoutes'])
   .controller('newController', function($http) {
     var vm = this
     vm.resources = {}
+    vm.temp = {}
 
     vm.addResource = function() {
-      vm.resources[vm.temp.name] = {}
+      vm.resources[vm.temp.resourceName] = {}
+      vm.temp.resourceName = ""
     }
 
-    vm.addProperty = function(key) {
-      vm.resources[key][vm.temp.property] = "String"
+    vm.addProperty = function(resourceKey) {
+      vm.resources[resourceKey][vm.temp.properties[resourceKey]] = ""
+      vm.temp.properties[resourceKey] = ""
     }
 
     vm.submit = function() {
@@ -36,13 +39,12 @@ angular.module('admin', ['adminRoutes'])
         "info": vm.info,
         "resources": vm.resources
       })
-        .then(function(response) {
-          vm.response = response
-        }, function(response) {
-
-        })
+      .then(function(response) {
+        vm.response = response
+      }, function(response) {
+        // error
+      })
     }
-
   })
   // Controller of detail view
   .controller('detailController', ['$http', '$routeParams', function($http, $routeParams) {
