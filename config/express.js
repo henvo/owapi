@@ -19,12 +19,18 @@ module.exports = function() {
   app.use(bodyParser.json())
   app.use(methodOverride())
 
-  /* Require apps */
+  /* Install apps here */
   app.use('/apis', require('../apps/apis/'))
   app.use('/admin', require('../apps/admin/'))
+  app.use('/docs', require('../apps/docs'))
 
   /* Require static files from public folder */
   app.use('/static', express.static(__dirname + '/../public'))
+
+  /* Handle 404 pages */
+  app.get('*', function(req, res) {
+    res.sendFile('404.html', { root: __dirname + '/../public/'})
+  })
 
   return app
 }
