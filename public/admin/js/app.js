@@ -13,7 +13,7 @@ angular.module('admin', ['adminRoutes'])
     var vm = this
     $http.get("/apis")
       .success(function(apis) {
-        vm.apis = apis
+        vm.apis = apis.data
       })
   })
   // Controller of 'new' view
@@ -52,6 +52,6 @@ angular.module('admin', ['adminRoutes'])
     vm.name = $routeParams.slug
     $http.get("/apis/" + vm.name )
       .success(function(api) {
-        vm.api = api
+        vm.api = api.data
       })
   }])

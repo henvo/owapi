@@ -23,7 +23,19 @@ module.exports = function(router) {
           req.Resource = require('mongoose').model(req.modelName)
           next()
         }
-      } else res.send('Resource is not a part of API schema!')
-    } else res.send('API does not exist!')
+      } else {
+        res.status(401).json({
+          "success": false,
+          "data": null,
+          "message": "Resource is not a part of the API schema"
+        })
+      }
+    } else {
+      res.status(404).json({
+        "success": false,
+        "data": null,
+        "message": "API not found."
+      })
+    }
   })
 }

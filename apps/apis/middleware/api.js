@@ -10,8 +10,20 @@ module.exports = function(router) {
         req.api = doc
         next()
       }
-      else if (!err && !doc) res.send('API not found.')
-      else res.send(err)
+      else if (!err && !doc) {
+        res.status(404).json({
+          "succes": false,
+          "data": null,
+          "message": "API not found."
+        })
+      }
+      else {
+        res.status(500).json({
+          "success": false,
+          "data": null,
+          "message": err
+        })
+      }
     })
   })
 }

@@ -8,33 +8,68 @@ module.exports = {
     req.api.markModified('resources')
     req.api.save(function (err) {
       if(err) {
-        res.send(err)
+        res.status(400).json({
+          "success": false,
+          "data": null,
+          "message": err
+        })
       }
       else {
-        res.send(req.api)
+        res.json({
+          "success": true,
+          "data": req.api,
+          "message": null
+        })
       }
     })
   },
   read: function(req, res) {
-    res.send(req.api.resources[req.params.resourceName])
+    res.json({
+      "success": true,
+      "data": req.api.resources[req.params.resourceName],
+      "message": null
+    })
   },
   update: function(req, res) {
-    res.send('Update Collection is not possible')
+    res.status(501).json({
+      "success": false,
+      "data": null,
+      "message": "This function is not available"
+    })
   },
   list: function(req, res) {
-    res.send(req.api.resources)
+    res.json({
+      "success": false,
+      "data": req.api.resources,
+      "message": null
+    })
   },
   remove: function(req, res) {
     delete req.api.resources[req.params.resourceName]
     req.api.markModified('resources')
     req.api.save(function (err) {
       if(err) {
-        res.send(err)
+        res.status(500).json({
+          "success": false,
+          "data": null,
+          "message": err
+        })
       }
       else {
         mongoose.connection.collections[req.modelName].drop( function(err) {
-          if(err) res.send(err)
-          else res.send(req.api)
+          if(err) {
+            res.status(500).json({
+              "success": false,
+              "data": null,
+              "message": err
+            })
+          } else {
+            res.json({
+              "success": true,
+              "data": req.api,
+              "message": null
+            })
+          }
         })
       }
     })
