@@ -27,6 +27,11 @@ module.exports = function() {
   /* Require static files from public folder */
   app.use('/static', express.static(__dirname + '/../public'))
 
+  /* Index page */
+  app.get('/', function(req, res) {
+    res.sendFile('index.html', { root: __dirname + '/../public/'})
+  })
+
   /* Handle 404 pages */
   app.get('*', function(req, res) {
     res.sendFile('404.html', { root: __dirname + '/../public/'})
