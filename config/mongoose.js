@@ -4,5 +4,4 @@ var config = require('./config')
 module.exports = function(){
   // Connect to database
   var db = mongoose.connect(config.db)
-
 }

@@ -29,4 +29,4 @@ backend server for a simple API and database behind it.
 
 Copyright (c) 2015 Henning Vogt
 
-Licensed under the Apache License, Version 2.0
+Licensed under the [Apache License, Version 2.0](http://opensource.org/licenses/Apache-2.0)

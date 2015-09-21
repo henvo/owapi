@@ -22,15 +22,14 @@ module.exports = function() {
   /* Install apps here */
   app.use('/apis', require('../apps/apis/'))
   app.use('/admin', require('../apps/admin/'))
-  app.use('/docs', require('../apps/docs'))
-
-  /* Require static files from public folder */
-  app.use('/static', express.static(__dirname + '/../public'))
-
+  
   /* Index page */
   app.get('/', function(req, res) {
     res.sendFile('index.html', { root: __dirname + '/../public/'})
   })
+
+  /* Require static files from public folder */
+  app.use('/static', express.static(__dirname + '/../public'))
 
   /* Handle 404 pages */
   app.get('*', function(req, res) {
