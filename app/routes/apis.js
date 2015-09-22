@@ -4,11 +4,11 @@ module.exports = function(app) {
   var apis = require('../controllers/apis')
 
   // Route all API related requests
-  app.route('/')
+  app.route('/apis')
     .get(apis.list)
     .post(apis.create)
 
-  app.route('/:apiName')
+  app.route('/apis/:apiName')
     .get(apis.read)
     .put(apis.update)
     .delete(apis.remove)

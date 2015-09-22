@@ -19,22 +19,14 @@ module.exports = function() {
   app.use(bodyParser.json())
   app.use(methodOverride())
 
-  /* Install apps here */
-  app.use('/apis', require('../apps/apis/'))
-  app.use('/admin', require('../apps/admin/'))
-  
-  /* Index page */
-  app.get('/', function(req, res) {
-    res.sendFile('index.html', { root: __dirname + '/../public/'})
-  })
+  app.set('views', './app/views')
+  app.set('view engine', 'ejs')
+
+  /* require app and routes here */
+  app.use('/', require('../app/'))
 
   /* Require static files from public folder */
   app.use('/static', express.static(__dirname + '/../public'))
-
-  /* Handle 404 pages */
-  app.get('*', function(req, res) {
-    res.sendFile('404.html', { root: __dirname + '/../public/'})
-  })
 
   return app
 }

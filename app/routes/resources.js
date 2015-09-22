@@ -4,11 +4,11 @@ module.exports = function(app) {
   var resources = require('../controllers/resources')
 
   // Route all resources requests
-  app.route('/:apiName/:resourceName')
+  app.route('/apis/:apiName/:resourceName')
     .get(resources.list)
     .post(resources.create)
 
-  app.route('/:apiName/:resourceName/:resourceId')
+  app.route('/apis/:apiName/:resourceName/:resourceId')
     .get(resources.read)
     .put(resources.update)
     .delete(resources.remove)

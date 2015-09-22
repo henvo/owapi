@@ -1,5 +1,5 @@
 
-angular.module('admin', ['adminRoutes'])
+angular.module('owapi', ['owapiRoutes'])
   .controller('mainController', function() {
     var vm = this
   })
