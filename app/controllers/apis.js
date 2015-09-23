@@ -36,7 +36,7 @@ module.exports = {
     })
   },
   list: function(req, res) {
-    API.find({}, function(err, docs) {
+    API.find({ "admin": req.user._id }, function(err, docs) {
       if(err) {
         res.status(500).json({
           "success": false,
