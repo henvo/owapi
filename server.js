@@ -4,9 +4,11 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development'
 var express = require('./config/express')
   , mongoose = require('./config/mongoose')
   , config = require('./config/config')
+  , passport = require('./config/passport')
 
 var app = express()
 var db = mongoose()
+var passport = passport()
 
 app.listen(config.Port, function(err) {
   if(err) console.log(err)

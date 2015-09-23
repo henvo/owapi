@@ -17,7 +17,12 @@ require('./routes/users')(router)
 
 /* Serve index page */
 router.get('/', function(req, res) {
-  res.render('index')
+  if(!req.user) {
+    res.redirect('/login')
+  }
+  else {
+    res.render('index')
+  }
 })
 
 module.exports = router

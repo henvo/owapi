@@ -2,6 +2,7 @@ module.exports = function(app) {
 
   // Require User controller
   var users = require('../controllers/users')
+    , passport = require('passport')
 
   // Route all Users related requests
   app.route('/users')
@@ -12,5 +13,12 @@ module.exports = function(app) {
     .get(users.read)
     .put(users.update)
     .delete(users.remove)
+
+  app.route('/login')
+    .get(users.renderSignin)
+    .post(passport.authenticate('local', {
+      successRedirect: '/',
+      failureRedirect: '/login'
+    }))
 
 }

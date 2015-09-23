@@ -2,6 +2,13 @@ var User = require('mongoose').model('User')
 
 module.exports = {
 
+  renderSignin: function(req, res, next) {
+    if(!req.user) {
+      res.render('signin')
+    }
+    else return res.redirect('/')
+  },
+
   create: function(req, res) {
     var newUser = new User(req.body)
     newUser.save(function(err, doc) {
