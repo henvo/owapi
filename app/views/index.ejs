@@ -38,9 +38,20 @@
             <li><a href="#/apis">List APIs</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#/new"><span class="glyphicon glyphicon-plus" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Create new API"></span></a></li>
-            <li><a href="#/users/<%= user.name %>"><span class="glyphicon glyphicon-user" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Settings"></span></a></li>
-            <li><a href="/logout"><span class="glyphicon glyphicon-log-out" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Logout"></span></a></li>
+            <li data-toggle="tooltip" data-placement="bottom" title="Create">
+              <a href="#/new">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+              </a>
+            </li>
+            <li data-toggle="tooltip" data-placement="bottom" title="Settings">
+              <a href="#/users/<%= user.name %>"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+              </a>
+            </li>
+            <li data-toggle="tooltip" data-placement="bottom" title="Logout">
+              <a href="/logout">
+                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+              </a>
+            </li>
           </ul>
         </div>
       </div>

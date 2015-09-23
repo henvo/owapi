@@ -3,10 +3,11 @@ var express = require('express')
 
 /* Require models */
 require('./models/api')
-require('./models/users')
+require('./models/user')
 
 /* Require middleware */
-require('./middleware/api')(router)
+require('./middleware/api-name')(router)
+require('./middleware/api-auth')(router)
 require('./middleware/resource')(router)
 
 /* Require routers */
