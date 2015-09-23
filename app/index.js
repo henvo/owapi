@@ -21,7 +21,9 @@ router.get('/', function(req, res) {
     res.redirect('/login')
   }
   else {
-    res.render('index')
+    res.render('index', {
+      user: req.user
+    })
   }
 })
 

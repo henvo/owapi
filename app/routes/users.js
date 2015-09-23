@@ -21,4 +21,7 @@ module.exports = function(app) {
       failureRedirect: '/login'
     }))
 
+    app.route('/logout')
+      .get(users.renderSignout)
+
 }

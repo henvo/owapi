@@ -9,6 +9,11 @@ module.exports = {
     else return res.redirect('/')
   },
 
+  renderSignout: function(req, res, next) {
+    req.logout()
+    res.redirect('/')
+  },
+
   create: function(req, res) {
     var newUser = new User(req.body)
     newUser.save(function(err, doc) {
