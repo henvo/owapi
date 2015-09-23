@@ -1,6 +1,6 @@
 {
   "name": "owapi",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "open web application programming interface",
   "main": "server.js",
   "scripts": {
