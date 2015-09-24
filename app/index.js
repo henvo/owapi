@@ -9,6 +9,7 @@ require('./models/user')
 require('./middleware/api-name')(router)
 require('./middleware/api-auth')(router)
 require('./middleware/resource')(router)
+require('./middleware/api-status')(router)
 
 /* Require routers */
 require('./routes/apis')(router)

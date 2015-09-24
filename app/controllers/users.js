@@ -14,6 +14,34 @@ module.exports = {
     res.redirect('/')
   },
 
+  renderSignup: function(req, res) {
+    if(!req.user) {
+      res.render('signup')
+    }
+    else {
+      return res.redirect('/')
+    }
+  },
+
+  signup: function(req, res) {
+    if(!req.user) {
+      var user = new User(req.body)
+      user.provider = 'local'
+      user.save(function(err) {
+        if(err) {
+          console.log(err)
+          return res.redirect('/signup#save-error')
+        }
+        req.login(user, function(err) {
+          if(err) return res.redirect('/signup#login-error')
+          return res.redirect('/')
+        })
+      })
+    } else {
+      return res.redirect('/')
+    }
+  },
+
   create: function(req, res) {
     var newUser = new User(req.body)
     newUser.save(function(err, doc) {

@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/henvo/owapi#readme",
   "dependencies": {
+    "bcrypt": "^0.8.5",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.13.3",
     "compression": "^1.5.2",
     "ejs": "^2.3.4",
