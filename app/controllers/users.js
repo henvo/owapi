@@ -61,7 +61,22 @@ module.exports = {
     })
   },
   read: function(req, res) {
-
+    User.findOne({ "name": req.params.userName }, function(err, doc) {
+      if(err) {
+        res.status(500).json({
+          "success": false,
+          "data": null,
+          "message": err
+        })
+      }
+      else {
+        res.json({
+          "sucess": true,
+          "data": doc,
+          "message": null
+        })
+      }
+    })
   },
   update: function(req, res) {
 

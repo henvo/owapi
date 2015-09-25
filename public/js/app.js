@@ -1,4 +1,3 @@
-
 angular.module('owapi', ['owapiRoutes'])
   .controller('mainController', function() {
     var vm = this
@@ -53,5 +52,14 @@ angular.module('owapi', ['owapiRoutes'])
     $http.get("/apis/" + vm.name )
       .success(function(api) {
         vm.api = api.data
+      })
+  }])
+  // Users controller
+  .controller('usersController', ['$http', '$routeParams', function($http, $routeParams) {
+    var vm = this
+    vm.name = $routeParams.slug
+    $http.get("/users/" + vm.name )
+      .success(function(user) {
+        vm.user = user.data
       })
   }])

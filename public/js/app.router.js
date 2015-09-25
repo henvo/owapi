@@ -22,4 +22,9 @@ angular.module('owapiRoutes', ['ngRoute'])
         controller: 'detailController',
         controllerAs: 'detail'
       })
+      .when('/users/:slug', {
+        templateUrl: '/static/views/pages/users.html',
+        controller: 'usersController',
+        controllerAs: 'users'
+      })
   })
