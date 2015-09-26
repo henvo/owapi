@@ -29,10 +29,14 @@ module.exports = {
     })
   },
   update: function(req, res) {
-    res.status(501).json({
-      "success": false,
-      "data": null,
-      "message": "This function is not supported by now."
+    API.update({ _id: req.body._id }, { $set : req.body }, function(err){
+      if(err) {
+        res.status(500).json({
+          "success": false,
+          "data": null,
+          "message": err
+        })
+      }
     })
   },
   list: function(req, res) {

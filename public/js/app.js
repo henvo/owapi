@@ -49,10 +49,23 @@ angular.module('owapi', ['owapiRoutes'])
   .controller('detailController', ['$http', '$routeParams', function($http, $routeParams) {
     var vm = this
     vm.name = $routeParams.slug
-    $http.get("/apis/" + vm.name )
-      .success(function(api) {
-        vm.api = api.data
-      })
+
+    vm.update = function() {
+      $http.put(
+        "/apis/" + vm.api.name,
+        vm.api
+      )
+    }
+
+    vm.refresh = function() {
+      $http.get("/apis/" + vm.name )
+        .success(function(api) {
+          vm.api = api.data
+        })
+    }
+
+    vm.refresh()
+
   }])
   // Users controller
   .controller('usersController', ['$http', '$routeParams', function($http, $routeParams) {

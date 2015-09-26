@@ -12,4 +12,9 @@ a {
 
 .navbar-brand {
   font-weight: 900;
+  font-size: 29px;
+}
+
+.info-text {
+  font-size: 20px;
 }
