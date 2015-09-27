@@ -16,7 +16,7 @@ angular.module('owapi', ['owapiRoutes'])
       })
   })
   // Controller of 'new' view
-  .controller('newController', function($http) {
+  .controller('newController', function($http, $location) {
     var vm = this
     vm.resources = {}
     vm.temp = {}
@@ -24,11 +24,6 @@ angular.module('owapi', ['owapiRoutes'])
     vm.addResource = function() {
       vm.resources[vm.temp.resourceName] = {}
       vm.temp.resourceName = ""
-    }
-
-    vm.addProperty = function(resourceKey) {
-      vm.resources[resourceKey][vm.temp.properties[resourceKey]] = ""
-      vm.temp.properties[resourceKey] = ""
     }
 
     vm.submit = function() {
@@ -40,6 +35,7 @@ angular.module('owapi', ['owapiRoutes'])
       })
       .then(function(response) {
         vm.response = response
+        $location.path('/apis/')
       }, function(response) {
         // error
       })
@@ -66,7 +62,7 @@ angular.module('owapi', ['owapiRoutes'])
 
     vm.addResourceProperty = function() {
       vm.api.resources[vm.selectedResource][vm.newPropertyName] = "String"
-      vm.newResourcePropertyName = ""
+      vm.newPropertyName = ""
     }
 
     vm.removeResource = function(resourceName) {
