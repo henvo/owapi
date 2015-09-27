@@ -1,5 +1,14 @@
+<form role="form" ng-submit="users.update()">
 <div class="row">
-  <div class="page-header">
-    <h1>{{ users.user.name }}</h1>
+  <div class="col-md-12">
+    <div class="pull-left owapi-breadcrumb">
+      users /
+      <a href="#/users/{{ users.name }}">{{ users.name }}</a></li>
+    </div>
+    <div class="pull-right">
+      <button class="btn btn-primary text-right btn-sm">Save changes</button>
+      <button class="btn btn-success text-right btn-sm" ng-click="detail.refresh()">Refresh</button>
+    </div>
+    <div class="clearfix"></div>
   </div>
 </div>

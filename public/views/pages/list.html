@@ -1,9 +1,14 @@
-<div class="page-header">
-  <h1>Here are your APIs</h1>
+<div class="row">
+  <div class="col-md-12">
+    <div ng-repeat="api in list.apis">
+      <h2>
+        <a href="#/apis/{{ api.name }}">{{ api.name }}</a>
+        <span ng-if="api.status=='active'" class="label label-success api-status-label">{{ api.status }}</span>
+        <span ng-if="api.status=='inactive'" class="label label-default api-status-label">{{ api.status }}</span>
+      </h2>
+      <p>{{ api.info }}</p>
+      <p>{{ api.created }}</p>
+      <hr>
+    </div>
+  </div>
 </div>
-
-<ul class="list-unstyled">
-  <li ng-repeat="api in list.apis">
-    <h2><a href="#/apis/{{ api.name }}">{{ api.name }}</a></h2>
-  </li>
-</ul>
