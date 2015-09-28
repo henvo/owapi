@@ -1,6 +1,7 @@
 angular.module('owapi', ['owapiRoutes'])
   .controller('mainController', function() {
     var vm = this
+    vm.error_message = "This is a very bad error!!"
   })
   // Controller of 'home' view
   .controller('homeController', function() {
@@ -8,12 +9,24 @@ angular.module('owapi', ['owapiRoutes'])
   })
 
   // Controller of 'list' view
-  .controller('listController', function($http) {
+  .controller('listController', function($http, $filter) {
     var vm = this
     $http.get("/apis")
       .success(function(apis) {
         vm.apis = apis.data
       })
+
+    vm.setApiStatus = function(api, status) {
+      var found = $filter('filter')(vm.apis, { name: api }, true)
+      if (found.length) {
+        found[0].status = status
+        console.log(0)
+        $http.put(
+          "/apis/" + found[0].name,
+          found[0]
+        )
+      }
+    }
   })
   // Controller of 'new' view
   .controller('newController', function($http, $location) {
@@ -29,7 +42,7 @@ angular.module('owapi', ['owapiRoutes'])
     vm.submit = function() {
       $http.post('/apis', {
         "name": vm.name,
-        "status": vm.status,
+        "status": "inactive",
         "info": vm.info,
         "resources": vm.resources
       })
@@ -89,9 +102,16 @@ angular.module('owapi', ['owapiRoutes'])
   // Users controller
   .controller('usersController', ['$http', '$routeParams', function($http, $routeParams) {
     var vm = this
-    vm.name = $routeParams.slug
-    $http.get("/users/" + vm.name )
+    $http.get("/users/" + $routeParams.slug )
       .success(function(user) {
         vm.user = user.data
       })
+
+      vm.update = function() {
+        $http.put(
+          "/users/" + vm.user.name,
+          vm.api
+        )
+      }
+
   }])

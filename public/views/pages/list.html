@@ -3,8 +3,14 @@
     <div ng-repeat="api in list.apis">
       <h2>
         <a href="#/apis/{{ api.name }}">{{ api.name }}</a>
-        <span ng-if="api.status=='active'" class="label label-success api-status-label">{{ api.status }}</span>
-        <span ng-if="api.status=='inactive'" class="label label-default api-status-label">{{ api.status }}</span>
+        <span ng-if="api.status=='active'" class="label label-success api-status-label pointer"
+              ng-click="list.setApiStatus(api.name, 'inactive')">
+          {{ api.status }}
+        </span>
+        <span ng-if="api.status=='inactive'" class="label label-default api-status-label pointer"
+              ng-click="list.setApiStatus(api.name, 'active')">
+          {{ api.status }}
+        </span>
       </h2>
       <p>{{ api.info }}</p>
       <p>{{ api.created }}</p>

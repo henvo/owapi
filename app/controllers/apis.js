@@ -5,6 +5,7 @@ module.exports = {
   create: function(req, res) {
     var newAPI = new API(req.body)
     newAPI.admin = req.user._id
+    newAPI.status = "inactive"
     newAPI.save(function(err, doc) {
       if(err) {
         res.status(400).json({
@@ -35,6 +36,13 @@ module.exports = {
           "success": false,
           "data": null,
           "message": err
+        })
+      }
+      else {
+        res.json({
+          "success": true,
+          "data": null,
+          "message": null
         })
       }
     })
