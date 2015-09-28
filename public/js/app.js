@@ -59,6 +59,7 @@ angular.module('owapi', ['owapiRoutes'])
     var vm = this
     vm.name = $routeParams.slug
     vm.selectedResource, vm.newResourceName, vm.newPropertyName = ""
+    vm.isModified = false
 
     vm.setSelectedResource = function(resourceName) {
       vm.selectedResource = resourceName
@@ -71,15 +72,18 @@ angular.module('owapi', ['owapiRoutes'])
       vm.api.resources[vm.newResourceName] = {}
       vm.setSelectedResource(vm.newResourceName)
       vm.newResourceName = ""
+      vm.isModified = true
     }
 
     vm.addResourceProperty = function() {
       vm.api.resources[vm.selectedResource][vm.newPropertyName] = "String"
       vm.newPropertyName = ""
+      vm.isModified = true
     }
 
     vm.removeResource = function(resourceName) {
       delete vm.api.resources[resourceName]
+      vm.isModified = true
     }
 
     vm.update = function() {
@@ -87,6 +91,9 @@ angular.module('owapi', ['owapiRoutes'])
         "/apis/" + vm.api.name,
         vm.api
       )
+      .success(function() {
+        vm.isModified = false
+      })
     }
 
     vm.refresh = function() {
