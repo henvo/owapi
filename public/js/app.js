@@ -107,8 +107,9 @@ angular.module('owapi', ['owapiRoutes'])
 
   }])
   // Users controller
-  .controller('usersController', ['$http', '$routeParams', function($http, $routeParams) {
+  .controller('usersController', ['$http', '$routeParams', '$window', function($http, $routeParams, $window) {
     var vm = this
+
     $http.get("/users/" + $routeParams.slug )
       .success(function(user) {
         vm.user = user.data
@@ -119,6 +120,15 @@ angular.module('owapi', ['owapiRoutes'])
           "/users/" + vm.user.name,
           vm.api
         )
+      }
+
+      vm.delete = function() {
+        $http.delete(
+          "/users/" + vm.user.name
+        )
+        .success(function() {
+          $window.location.href = "/logout"
+        })
       }
 
   }])

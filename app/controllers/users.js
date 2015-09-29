@@ -100,7 +100,22 @@ module.exports = {
     })
   },
   remove: function(req, res) {
-
+    User.remove({ name: req.params.userName }, function(err) {
+      if(err) {
+        res.status(500).json({
+          "success": false,
+          "data": null,
+          "message": err
+        })
+      }
+      else {
+        res.json({
+          "sucess": true,
+          "data": null,
+          "message": "User succesfully deleted."
+        })
+      }
+    })
   }
 
 }
