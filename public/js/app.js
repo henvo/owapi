@@ -1,7 +1,7 @@
 angular.module('owapi', ['owapiRoutes'])
   .controller('mainController', function() {
     var vm = this
-    vm.error_message = "This is a very bad error!!"
+    vm.response = {}
   })
   // Controller of 'home' view
   .controller('homeController', function() {
@@ -29,8 +29,9 @@ angular.module('owapi', ['owapiRoutes'])
     }
   })
   // Controller of 'new' view
-  .controller('newController', function($http, $location) {
+  .controller('newController', function($http, $location, $scope) {
     var vm = this
+
     vm.resources = {}
     vm.temp = {}
 
@@ -48,6 +49,7 @@ angular.module('owapi', ['owapiRoutes'])
       })
       .then(function(response) {
         vm.response = response
+        $scope.main.response = response
         $location.path('/apis/')
       }, function(response) {
         // error
