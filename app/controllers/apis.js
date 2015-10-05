@@ -11,7 +11,7 @@ module.exports = {
         res.status(400).json({
           "success": false,
           "data": null,
-          "message": err
+          "message": "Could not create API. Name already given?"
         })
       } else {
         res.json({

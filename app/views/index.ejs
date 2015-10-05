@@ -11,16 +11,20 @@
 
     <link rel="stylesheet" type="text/css" href="/static/lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/static/css/starter-template.css">
+
     <script type="text/javascript" src="/static/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
     <script type="text/javascript" src="/static/lib/angular/angular.js"></script>
     <script type="text/javascript" src="/static/lib/angular-route/angular-route.js"></script>
     <script type="text/javascript" src="/static/js/app.js"></script>
     <script type="text/javascript" src="/static/js/app.router.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script type="text/javascript" src="/static/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/controllers/mainCtrl.js"></script>
+    <script type="text/javascript" src="/static/js/controllers/apiCtrl.js"></script>
+    <script type="text/javascript" src="/static/js/controllers/userCtrl.js"></script>
 
   </head>
-  <body ng-app="owapi" ng-controller="mainController as main">
+  <body ng-app="owapi" ng-controller="mainCtrl">
 
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -59,8 +63,8 @@
 
     <div class="container starter-template">
       <div class="row top-buffer">
-        <div class="alert alert-warning" role="alert" ng-if="main.response.success==false">
-          {{ main.response.message }}
+        <div class="alert alert-warning alert-dismissible" role="alert" ng-if="main.error">
+          {{ main.error.message }}
         </div>
       </div>
       <!-- ng views go right here -->

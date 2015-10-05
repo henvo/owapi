@@ -2,29 +2,23 @@
 angular.module('owapiRoutes', ['ngRoute'])
   .config(function($routeProvider, $locationProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: '/static/views/pages/home.html',
-        controller: 'homeController',
-        controllerAs: 'home'
-      })
+    .when('/', {
+      templateUrl: '/static/views/pages/home.html'
+    })
       .when('/apis', {
         templateUrl: '/static/views/pages/list.html',
-        controller: 'listController',
-        controllerAs: 'list'
+        controller: 'apiCtrl'
       })
       .when('/new', {
         templateUrl: '/static/views/pages/new.html',
-        controller: 'newController',
-        controllerAs: 'new'
+        controller: 'apiCtrl'
       })
       .when('/apis/:slug', {
         templateUrl: '/static/views/pages/detail.html',
-        controller: 'detailController',
-        controllerAs: 'detail'
+        controller: 'apiCtrl'
       })
       .when('/users/:slug', {
         templateUrl: '/static/views/pages/users.html',
-        controller: 'usersController',
-        controllerAs: 'users'
+        controller: 'userCtrl'
       })
   })

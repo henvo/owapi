@@ -1,14 +1,14 @@
-<div class="row">
+<div class="row" ng-init="getList()">
   <div class="col-md-12">
-    <div ng-repeat="api in list.apis">
+    <div ng-repeat="api in apis">
       <h2>
         <a href="#/apis/{{ api.name }}">{{ api.name }}</a>
         <span ng-if="api.status=='active'" class="label label-success api-status-label pointer"
-              ng-click="list.setApiStatus(api.name, 'inactive')">
+              ng-click="changeStatus(api.name, 'inactive')">
           {{ api.status }}
         </span>
         <span ng-if="api.status=='inactive'" class="label label-default api-status-label pointer"
-              ng-click="list.setApiStatus(api.name, 'active')">
+              ng-click="changeStatus(api.name, 'active')">
           {{ api.status }}
         </span>
       </h2>

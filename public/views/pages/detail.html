@@ -1,94 +1,96 @@
-<form role="form" ng-submit="detail.update()">
-<div class="row top-buffer">
-  <div class="col-md-12">
-    <div class="pull-left owapi-breadcrumb">
-      <a href="#/apis">APIs</a> /
-      <a href="#/apis/{{ detail.name }}">{{ detail.name }}</a></li>
-    </div>
-    <div class="pull-right">
-      <button ng-if="detail.isModified" class="btn btn-primary text-right btn-sm">Save changes</button>
-      <button class="btn btn-success text-right btn-sm" ng-click="detail.refresh()">Refresh</button>
-    </div>
-    <div class="clearfix"></div>
-  </div>
-</div>
-<hr>
-
-<div class="row top-buffer">
-  <div class="col-md-12">
-    <textarea class="form-control info-text" rows="2" ng-model="detail.api.info" ng-click="detail.isModified=true"></textarea>
-  </div>
-</div>
-
-<div class="row top-buffer">
-  <div class="col-md-12">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <strong>Resources</strong>
+<form role="form" ng-submit="updateAPI()">
+  <div class="row top-buffer" ng-init="getSingleAPI()">
+    <div class="col-md-12">
+      <div class="pull-left owapi-breadcrumb">
+        <a href="#/apis">APIs</a> /
+        <a href="#/apis/{{ api.name }}">{{ api.name }}</a></li>
       </div>
-      <table class="table table-responsive table-hover">
-        <tr ng-repeat="(resourceKey, resourceValue) in detail.api.resources">
-          <td class="col-md-4">
-            <a href="#/apis/{{ detail.name }}" ng-click="detail.setSelectedResource(resourceKey)">
-              {{detail.name}}/{{ resourceKey }}
-            </a>
-          </td>
-          <td class="col-md-4"></td>
-          <td class="col-md-4 text-right">
-            <a href="#/apis/{{ detail.name }}" ng-click="detail.removeResource(resourceKey)">
-              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td class="col-md-4">
-            {{detail.name}}/ <input type="text" ng-model="detail.newResourceName">
-          </td>
-          <td class="col-md-4">
-          </td>
-          <td class="col-md-4 text-right">
-            <a href="#/apis/{{ detail.name }}" ng-click="detail.addResource()">
-              <span class="glyphicon glyphicon-plus"></span>
-            </a>
-          </td>
-        </tr>
-      </table>
-    </div>
-  </div>
-</div>
-
-<div class="row top-buffer" ng-if="detail.selectedResource">
-  <div class="col-md-12">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <strong>Schema</strong> of {{ detail.selectedResource }}
+      <div class="pull-right">
+        <button class="btn btn-primary text-right btn-sm" ng-click="updateAPI()">Save changes</button>
+        <button class="btn btn-success text-right btn-sm" ng-click="getSingleAPI()">Refresh</button>
       </div>
-      <table class="table table-responsive">
-        <tr ng-repeat="(propertyKey, propertyValue) in detail.api.resources[detail.selectedResource]">
-          <td>{{ propertyKey}}</td>
-          <td>
-            <select class="form-control" ng-model="detail.api.resources[detail.selectedResource][propertyKey]">
-              <option>String</option>
-              <option>Number</option>
-              <option>Date</option>
-              <option>ObjectId</option>
-            </select>
-          </td>
-          <td>
-          </td>
-        </tr>
-        <tr>
-          <td class="col-md-4"><input type="text" ng-model="detail.newPropertyName"></td>
-          <td class="col-md-4"></td>
-          <td class="col-md-4 text-right">
-            <a href="#/apis/{{ detail.name }}" ng-click="detail.addResourceProperty()">
-              <span class="glyphicon glyphicon-plus"></span>
-            </a>
-          </td>
-        </tr>
-      </table>
+      <div class="clearfix"></div>
     </div>
   </div>
-</div>
+  <hr>
 
+  <div class="row top-buffer">
+    <div class="col-md-12">
+      <textarea class="form-control info-text" rows="2" ng-model="api.info"></textarea>
+    </div>
+  </div>
+
+  <div class="row top-buffer">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <strong>Resources</strong>
+        </div>
+        <table class="table table-responsive table-hover">
+          <tr ng-repeat="(resourceKey, resourceValue) in api.resources">
+            <td class="col-md-4">
+              <a href="#/apis/{{ api.name }}" ng-click="setSelectedResource(resourceKey)">
+                {{api.name}}/{{ resourceKey }}
+              </a>
+            </td>
+            <td class="col-md-4"></td>
+            <td class="col-md-4 text-right">
+              <a href="#/apis/{{ api.name }}" ng-click="removeResourceFromAPI(resourceKey)">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="col-md-4">
+              {{api.name}}/ <input type="text" ng-model="newResourceName">
+            </td>
+            <td class="col-md-4">
+            </td>
+            <td class="col-md-4 text-right">
+              <a href="#/apis/{{ api.name }}" ng-click="addResourceToAPI(api)">
+                <span class="glyphicon glyphicon-plus"></span>
+              </a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="row top-buffer" ng-show="selectedResource">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <strong>Schema</strong> of /{{ selectedResource }}
+        </div>
+        <table class="table table-responsive">
+          <tr ng-repeat="(propertyKey, propertyValue) in api.resources[selectedResource]">
+            <td>{{ propertyKey}}</td>
+            <td>
+              <select class="form-control" ng-model="api.resources[selectedResource][propertyKey]">
+                <option>String</option>
+                <option>Number</option>
+                <option>Date</option>
+                <option>ObjectId</option>
+              </select>
+            </td>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <td class="col-md-4">
+              <input type="text" ng-model="newPropertyName">
+            </td>
+            <td class="col-md-4"></td>
+            <td class="col-md-4 text-right">
+              <a href="#/apis/{{ api.name }}" ng-click="addPropertyToResource(newPropertyName, selectedResource)">
+                <span class="glyphicon glyphicon-plus"></span>
+              </a>
+            </td>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+  </div>
 </form>
