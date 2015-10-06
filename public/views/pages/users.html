@@ -1,12 +1,12 @@
-<form role="form" ng-submit="users.update()">
+<form role="form" ng-init="getUser()" ng-submit="updateUser()">
   <div class="row top-buffer">
     <div class="col-md-12">
       <div class="pull-left owapi-breadcrumb">
         users /
-        <a href="#/users/{{ users.user.name }}">{{ users.user.name }}</a></li>
+        <a href="#/users/{{ users.user.name }}">{{ user.name }}</a></li>
       </div>
       <div class="pull-right">
-        <button class="btn btn-primary text-right btn-sm" ng-if="users.isModified">Save changes</button>
+        <button class="btn btn-primary text-right btn-sm" type="submit">Save changes</button>
         <button class="btn btn-success text-right btn-sm" ng-click="detail.refresh()">Refresh</button>
       </div>
       <div class="clearfix"></div>
@@ -20,8 +20,8 @@
           Basic user information
         </div>
         <div class="panel-body">
-          <p>Username: {{ users.user.name }}</p>
-          <p>E-Mail: {{ users.user.email }}</p>
+          <p>Username: {{ user.name }}</p>
+          <p>E-Mail: {{ user.email }}</p>
         </div>
       </div>
     </div>
@@ -34,7 +34,7 @@
           Account settings
         </div>
         <div class="panel-body">
-          <a href="#/users/{{ users.user.name }}"  class="btn btn-danger" ng-click="users.delete()">
+          <a href="#/users/{{ user.name }}"  class="btn btn-danger" ng-click="user.delete()">
             Delete Account
           </a>
         </div>

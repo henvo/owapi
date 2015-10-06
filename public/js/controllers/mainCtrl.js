@@ -1,6 +1,12 @@
 // Main Controller
-app.controller('mainCtrl', function($scope) {
+app.controller('mainCtrl', ['$scope', function($scope) {
 
-  // Code goes right here
+  $scope.clearFix = function() {
+    $scope.warning = null
+    $scope.error = null
+    $scope.success = null
+  }
 
-})
+  $scope.clearFix()
+
+}])

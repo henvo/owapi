@@ -6,7 +6,12 @@ app.controller('apiCtrl', ['$scope', '$filter', '$http', '$location', '$routePar
   $scope.getList = function() {
     $http.get("/apis")
       .success(function(res) {
-        $scope.apis = res.data
+        if(res.data.length==0) {
+          $scope.$parent.warning = "There are no APIs in your basket!"
+        }
+        else {
+          $scope.apis = res.data
+        }
       })
   }
 
@@ -30,8 +35,8 @@ app.controller('apiCtrl', ['$scope', '$filter', '$http', '$location', '$routePar
     $http.post( '/apis', $scope.api )
     .then(function(response) {
       $location.path('/apis/')
-    }, function(response) {
-      $scope.main.error = response.data
+    }, function(res) {
+      $scope.$parent.warning = res.data.message
     })
   }
 
@@ -69,5 +74,6 @@ app.controller('apiCtrl', ['$scope', '$filter', '$http', '$location', '$routePar
     $scope.newPropertyName = ""
   }
 
+  $scope.$parent.clearFix()
 
 }])
