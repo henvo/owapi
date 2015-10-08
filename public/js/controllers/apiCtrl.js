@@ -7,7 +7,7 @@ app.controller('apiCtrl', ['$scope', '$filter', '$http', '$location', '$routePar
     $http.get("/apis")
       .success(function(res) {
         if(res.data.length==0) {
-          $scope.$parent.warning = "There are no APIs in your basket!"
+          $scope.$parent.warning = "There are no APIs in your basket yet! :("
         }
         else {
           $scope.apis = res.data
@@ -41,10 +41,20 @@ app.controller('apiCtrl', ['$scope', '$filter', '$http', '$location', '$routePar
   }
 
   // POST request of API to server
+  $scope.deleteAPI = function() {
+    $http.delete( '/apis/' + $scope.api.name )
+    .then(function(response) {
+      $location.path('/apis/')
+    }, function(res) {
+      $scope.$parent.warning = res.data.message
+    })
+  }
+
+  // POST request of API to server
   $scope.updateAPI = function() {
     $http.put( '/apis/' + $scope.api.name, $scope.api )
     .then(function(response) {
-      $location.path('/apis/')
+      $scope.$parent.success = "API successfully updated! :)"
     }, function(response) {
       $scope.error = response.data
     })

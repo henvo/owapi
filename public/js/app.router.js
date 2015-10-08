@@ -3,7 +3,8 @@ angular.module('owapiRoutes', ['ngRoute'])
   .config(function($routeProvider, $locationProvider) {
     $routeProvider
     .when('/', {
-      templateUrl: '/static/views/pages/home.html'
+      templateUrl: '/static/views/pages/home.html',
+      controller: 'apiCtrl'
     })
       .when('/apis', {
         templateUrl: '/static/views/pages/list.html',

@@ -5,10 +5,11 @@
         users /
         <a href="#/users/{{ users.user.name }}">{{ user.name }}</a></li>
       </div>
+      <!--
       <div class="pull-right">
         <button class="btn btn-primary text-right btn-sm" type="submit">Save changes</button>
         <button class="btn btn-success text-right btn-sm" ng-click="detail.refresh()">Refresh</button>
-      </div>
+      </div> -->
       <div class="clearfix"></div>
     </div>
   </div>
@@ -31,10 +32,10 @@
     <div class="col-md-12">
       <div class="panel panel-danger">
         <div class="panel-heading">
-          Account settings
+          Danger Zone
         </div>
         <div class="panel-body">
-          <a href="#/users/{{ user.name }}"  class="btn btn-danger" ng-click="user.delete()">
+          <a href="#/users/{{ user.name }}"  class="btn btn-danger" ng-click="deleteUser()">
             Delete Account
           </a>
         </div>

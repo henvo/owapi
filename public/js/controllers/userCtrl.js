@@ -1,6 +1,6 @@
 // User Controller
-app.controller('userCtrl', ['$scope', '$http', '$routeParams',
-function($scope, $http, $routeParams) {
+app.controller('userCtrl', ['$scope', '$http', '$routeParams', '$window',
+function($scope, $http, $routeParams, $window) {
 
   // Get user profile
   $scope.getUser = function() {
@@ -11,7 +11,11 @@ function($scope, $http, $routeParams) {
   }
   // Delete user
   $scope.deleteUser = function() {
-    //
+    $http.delete("/users/" + $routeParams.slug)
+      .success(function(res) {
+      // Redirect
+        $window.location.href="/logout"
+      })
   }
 
   $scope.$parent.clearFix()

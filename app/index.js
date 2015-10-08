@@ -8,8 +8,8 @@ require('./models/user')
 /* Require middleware */
 require('./middleware/api-name')(router)
 require('./middleware/api-auth')(router)
-require('./middleware/resource')(router)
 require('./middleware/api-status')(router)
+require('./middleware/resource')(router)
 
 /* Require routers */
 require('./routes/apis')(router)
