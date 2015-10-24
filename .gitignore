@@ -27,5 +27,6 @@ build/Release
 node_modules
 public/lib/*
 
+config/env/test.js
 config/env/development.js
 config/env/production.js
