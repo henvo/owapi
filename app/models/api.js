@@ -1,4 +1,4 @@
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 
 // api schema
 var apiSchema = mongoose.Schema({
@@ -23,6 +23,6 @@ var apiSchema = mongoose.Schema({
     required: true
   },
   "resources": {}
-})
+});
 
-mongoose.model('API', apiSchema)
+mongoose.model('API', apiSchema);

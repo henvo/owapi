@@ -1,1 +1,1 @@
-var app = angular.module('owapi', ['owapiRoutes'])
+var app = angular.module('owapi', ['owapiRoutes']);

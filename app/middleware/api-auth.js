@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = function(router) {
 
   // Check if user is logged in
@@ -7,11 +9,11 @@ module.exports = function(router) {
         "success": false,
         "data": null,
         "message": "You are not logged in."
-      })
+      });
     } else {
-      next()
+      next();
     }
-  })
+  });
 
   // Check if user is admin of API
   router.use('/apis/:apiName', function(req, res, next) {
@@ -20,10 +22,9 @@ module.exports = function(router) {
         "success": false,
         "data": null,
         "message": "You are NOT the father."
-      })
+      });
     } else {
-      next()
+      next();
     }
-  })
-
-}
+  });
+};

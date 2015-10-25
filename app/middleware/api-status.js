@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = function(router) {
 
   // Check if user is logged in
@@ -7,9 +9,9 @@ module.exports = function(router) {
         "success": false,
         "data": null,
         "message": "API is currently inactive."
-      })
+      });
     } else {
-      next()
+      next();
     }
-  })
-}
+  });
+};

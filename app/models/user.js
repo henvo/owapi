@@ -1,5 +1,7 @@
-var mongoose = require('mongoose')
-  , bcrypt = require('bcrypt')
+"use strict";
+
+var mongoose = require('mongoose'),
+    bcrypt = require('bcrypt');
 
 // api schema
 var userSchema = mongoose.Schema({
@@ -18,26 +20,26 @@ var userSchema = mongoose.Schema({
     type: String,
     required: true
   }
-})
+});
 
 userSchema.pre('save', function(next) {
   var user = this;
   if(user.isModified('password')){
     bcrypt.hash(user.password, 10, function(err, hash) {
       if (err){
-        next()
+        next();
       }
-      user.password = hash
-      next()
+      user.password = hash;
+      next();
     });
   } else {
-    next()
+    next();
   }
-})
+});
 
 userSchema.methods.authenticate = function(attemptPassword) {
-  var user = this
+  var user = this;
   return bcrypt.compareSync(attemptPassword, user.password);
-}
+};
 
-mongoose.model('User', userSchema)
+mongoose.model('User', userSchema);
