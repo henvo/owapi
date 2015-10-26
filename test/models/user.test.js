@@ -1,8 +1,10 @@
-/*exported should*/
+/*exported should, app*/
 "use strict";
 
-var should = require('should'),
-    User = require('mongoose').model('User');
+var app = require('../../server.js'),
+    should = require('should'),
+    mongoose = require('mongoose'),
+    User = mongoose.model('User');
 
 describe('User model Test', function() {
 

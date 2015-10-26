@@ -13,7 +13,6 @@ module.exports = function(app) {
 
   app.route('/users/:userName')
     .get(users.read)
-    .put(users.update)
     .delete(users.remove);
 
   app.route('/login')

@@ -1,7 +1,8 @@
-/*exported should*/
+/*exported should, app*/
 "use strict";
 
-var should = require('should'),
+var app = require('../../server.js'),
+    should = require('should'),
     mongoose = require('mongoose'),
     API = mongoose.model('API');
 
