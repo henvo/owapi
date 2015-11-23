@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/henvo/owapi/issues"
   },
-  "homepage": "https://github.com/henvo/owapi#readme",
+  "homepage": "http://owapi.org",
   "dependencies": {
     "bcrypt": "^0.8.5",
     "bcrypt-nodejs": "0.0.3",
